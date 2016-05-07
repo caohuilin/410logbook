@@ -59,7 +59,7 @@ async function getNote(ctx){
         const con_line = con.split('\n');
         const noteItem = {};
         noteItem.id = k++;
-        noteItem.userId = parseInt(con_line[0].substring(3,con_line[0].length - 1));
+        noteItem.userId = parseInt(con_line[0].substring(3));
         noteItem.date = con_line[1].substring(3,con_line[1].length - 1);
         noteItem.mood = con_line[2].substring(3,con_line[2].length - 1);
         noteItem.content = con_line[3].substring(3,con_line[3].length - 1);
@@ -75,7 +75,7 @@ async function getIndexNote(ctx){
     const noteConList = noteList.map(async (note)=> {
         const con = await readFileSy("./hua/note/" + note);
         const con_line = con.split('\n');
-        const user = parseInt(con_line[0].substring(3,con_line[0].length - 1));
+        const user = parseInt(con_line[0].substring(3));
         if(user === userId){
             const noteItem = {};
             noteItem.id = k++;
